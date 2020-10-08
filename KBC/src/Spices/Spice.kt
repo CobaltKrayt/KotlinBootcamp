@@ -4,7 +4,7 @@ fun main()
 {
     delegate()
 }
-abstract class Spice(var name:String,var spiciness:String = "mild",color: SpiceColor ): SpiceColor by color{
+abstract sealed class Spice(var name:String,var spiciness:String = "mild",color: SpiceColor ): SpiceColor by color{
 
     //abstract allows us to further segmentate the class into subclasses with inheritance and all that
 
@@ -32,9 +32,9 @@ abstract class Spice(var name:String,var spiciness:String = "mild",color: SpiceC
     abstract fun prepareSpice()
 }
 
-//a subclass inherits its properties. you must pass an arg for every property used
+//a subclass inherits its parent class properties. you must pass an arg for every property used
 class Curry(name :String ,spiciness: String, color: SpiceColor = YellowSpiceColor):
-        Spice(name, spiciness, color), Grinder //using the interface
+        Spice(name, spiciness, color), Grinder //declaring that this is a subclass of spice then using the interface
 {
     //ovr is actually implementing in this case
     override fun prepareSpice(){
@@ -48,16 +48,21 @@ interface Grinder{
     fun grind():String = "Ground"
 }
 
+enum class Color(val rgb: Int) {
+    RED(0xFF0000), GREEN(0x00FF00), BLUE(0x0000FF),YELLOW(0xFFFF00)
+}
+
 //a means via which any spice can pick its colour
 //interfaces can also be used as types
 interface SpiceColor{
-    var color: String
+    var color: Color
     //var name: String
 }
 
 //a property that is linked with the spicecolor interface
+//there can only be one YellowSpiceColor
 object YellowSpiceColor: SpiceColor{
-    override var color = "Yellow"
+    override var color = Color.YELLOW
     //override var name = "Yellowish"
 }
 
@@ -68,6 +73,7 @@ fun delegate(){
     println("Colour of this curry is ${unusualcurry.color}")
 }
 
+//its sole purpose is to store data in a more readable way
 data class SpiceContainer(var spice: Spice){
     var label = spice.name
 }

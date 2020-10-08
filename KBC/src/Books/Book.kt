@@ -1,21 +1,8 @@
 package Books
 
-open class Book(var title: String,var author: String) {
+class Book(var title: String, var author: String,var year: Int) {
 
-  private var currentPage = 1
+    fun getTA() = title to author
 
-
-    //method
-    open fun readPage(){
-        currentPage++
-    }
-}
-
-class eBook(title: String,author: String, var format: String= "text"): Book(title,author){
-
-    private var wordsRead = 0
-
-    override fun readPage(){
-        wordsRead+=250
-    }
+    fun getTAY() = Triple(title,author,year)
 }
