@@ -1,8 +1,6 @@
-package Spice
+package SpiceOld
 
-import java.util.*
 import kotlin.random.Random
-import kotlin.random.Random.Default.nextInt
 
 fun main()
 {

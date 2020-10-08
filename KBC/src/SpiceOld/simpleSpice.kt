@@ -1,4 +1,4 @@
-package Spice
+package SpiceOld
 
 class simpleSpice {
     var spF: String = "mild"

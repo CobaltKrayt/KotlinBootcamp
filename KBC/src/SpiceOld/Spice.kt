@@ -1,4 +1,4 @@
-package Spice
+package SpiceOld
 
 class Spice(var name:String,var spiciness:String = "mild") {
 
@@ -20,5 +20,5 @@ class Spice(var name:String,var spiciness:String = "mild") {
         println("${this.spiciness}")
     }
 }
-
+//helper function
 fun makeSalt() = Spice("Salt")
