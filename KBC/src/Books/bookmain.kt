@@ -30,9 +30,15 @@ fun main() {
 
      */
 
-    val b = Book
+    val b = Book("This book", "THis author", 2020, 250)
 
+    var pep = Puppy()
 
+    while (b.pages>0)
+    {
+        pep.playWithBook(b)
+        println("${b.pages}")
+    }
 
 
 }
